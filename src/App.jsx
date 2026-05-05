@@ -60,7 +60,7 @@ export default function App() {
           />
           
           <h1 style={{ 
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Cinzel', serif",
             fontSize: 'clamp(3rem, 5vw, 4.5rem)',
             fontWeight: 400,
             margin: '0 0 1rem 0',
@@ -99,7 +99,7 @@ export default function App() {
           boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
         }}>
           <h2 style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Cinzel', serif",
             fontSize: '1.6rem',
             margin: '0 0 0.5rem 0',
             color: '#fff',
