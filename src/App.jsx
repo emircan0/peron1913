@@ -1,247 +1,133 @@
-import React from 'react'
-import {
-  CalendarDays,
-  ChevronRight,
-  Clock3,
-  GlassWater,
-  Instagram,
-  MapPin,
-  Menu,
-  Music2,
-  Phone,
-  Sparkles,
-  Utensils,
-  Wine,
-  X,
-} from 'lucide-react'
-
-const menuHighlights = [
-  {
-    title: 'Meyhane Sofrası',
-    text: 'Paylaşımlı mezeler, deniz ürünleri ve zamansız ara sıcaklar için ayrılmış seçkin alan.',
-  },
-  {
-    title: 'A la Carte',
-    text: 'Et, balık ve mevsim tabaklarını daha rafine bir restoran akışıyla sunan bölüm.',
-  },
-  {
-    title: 'İmza Lezzetler',
-    text: 'Peron 1913 mutfağına özel reçeteler, günlük ürünler ve dönemsel öneriler.',
-  },
-]
-
-const galleryItems = [
-  'Ana salon',
-  'Meyhane masası',
-  'Canlı müzik',
-  'Özel davet',
-  'Bar & servis',
-  'Teras atmosferi',
-]
+import React from 'react';
+import { Instagram, MapPin, Phone } from 'lucide-react';
 
 export default function App() {
-  const [navOpen, setNavOpen] = React.useState(false)
-
-  const closeNav = () => setNavOpen(false)
-
   return (
-    <main className="site-shell">
-      <header className="site-header">
-        <a className="brand" href="#anasayfa" aria-label="Peron 1913 anasayfa">
-          <img src="/peron-1913-logo.jpg" alt="Peron 1913" />
-          <span>
-            <strong>Peron 1913</strong>
-            <small>Restoran & Meyhane</small>
-          </span>
-        </a>
+    <div style={{
+      height: '100vh',
+      width: '100vw',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#0a0908',
+      color: '#f2ece4',
+      fontFamily: "'Montserrat', sans-serif",
+      padding: '2rem',
+      boxSizing: 'border-box',
+      overflow: 'hidden',
+      position: 'relative'
+    }}>
+      {/* Background glow effect */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '60vw',
+        height: '60vw',
+        background: 'radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 60%)',
+        zIndex: 0,
+        pointerEvents: 'none'
+      }} />
 
-        <nav className={navOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Ana menü">
-          <a onClick={closeNav} href="#hikaye">Hikaye</a>
-          <a onClick={closeNav} href="#menu">Menü</a>
-          <a onClick={closeNav} href="#galeri">Galeri</a>
-          <a onClick={closeNav} href="#iletisim">İletişim</a>
-        </nav>
-
-        <a className="header-action" href="tel:+900000000000">
-          <Phone size={17} />
-          Rezervasyon
-        </a>
-
-        <button
-          className="nav-toggle"
-          type="button"
-          aria-label="Menüyü aç veya kapat"
-          onClick={() => setNavOpen((value) => !value)}
-        >
-          {navOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </header>
-
-      <section className="hero" id="anasayfa">
-        <div className="hero-media" aria-hidden="true">
-          <img src="/peron-1913-logo.jpg" alt="" />
-        </div>
-
-        <div className="hero-content">
-          <p className="eyebrow">İstanbul meyhane kültürüne seçkin bir durak</p>
-          <h1>Peron 1913</h1>
-          <p className="hero-copy">
-            Kurumsal çizgisi güçlü, sıcaklığı yerinde, iyi sofra ve iyi müzik etrafında
-            tasarlanmış restoran-meyhane deneyimi.
-          </p>
-
-          <div className="hero-actions">
-            <a className="primary-button" href="#iletisim">
-              Rezervasyon Planla
-              <ChevronRight size={18} />
-            </a>
-            <a className="secondary-button" href="#menu">
-              Menü Alanlarını Gör
-            </a>
-          </div>
-        </div>
-
-        <div className="hero-info" aria-label="Kısa bilgiler">
-          <span>
-            <Clock3 size={18} />
-            16:00 - 02:00
-          </span>
-          <span>
-            <Music2 size={18} />
-            Fasıl & canlı performans
-          </span>
-          <span>
-            <MapPin size={18} />
-            Konum bilgisi eklenecek
-          </span>
-        </div>
-      </section>
-
-      <section className="intro-section" id="hikaye">
-        <div>
-          <p className="section-kicker">Hikaye</p>
-          <h2>Eski İstanbul ruhu, bugünün servis disipliniyle buluşuyor.</h2>
-        </div>
-        <div className="intro-copy">
-          <p>
-            Peron 1913 için hazırlanan bu altyapı, marka hikayesini, menüleri, mekan
-            fotoğraflarını, etkinlik duyurularını ve rezervasyon akışını sonradan kolayca
-            güncelleyebileceğiniz şekilde düzenlendi.
-          </p>
-          <p>
-            Görsel dil; siyah-beyaz logonun nostaljik karakterini, kurumsal ve elit bir
-            restoran atmosferiyle dengeleyen koyu, sıcak ve sakin bir yapı üzerine kuruldu.
-          </p>
-        </div>
-      </section>
-
-      <section className="signature-band">
-        <div className="metric">
-          <strong>1913</strong>
-          <span>Marka referansı</span>
-        </div>
-        <div className="metric">
-          <strong>6</strong>
-          <span>Hazır içerik alanı</span>
-        </div>
-        <div className="metric">
-          <strong>100%</strong>
-          <span>Vercel uyumlu</span>
-        </div>
-      </section>
-
-      <section className="content-section" id="menu">
-        <div className="section-heading">
-          <p className="section-kicker">Menü</p>
-          <h2>Lezzet kategorileri için hazır vitrin.</h2>
-          <p>
-            Bu alanlar gerçek menüler geldiğinde fiyat, açıklama, kategori ve görsellerle
-            genişletilebilir.
+      <div style={{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '4rem',
+        width: '100%',
+        maxWidth: '1200px',
+        zIndex: 1,
+        animation: 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+      }}>
+        
+        {/* Left Side: Brand and Text */}
+        <div style={{ flex: '1 1 400px', maxWidth: '550px', textAlign: 'left' }}>
+          <img 
+            src="/peron-1913-logo.jpg" 
+            alt="Peron 1913" 
+            style={{ 
+              width: '100px', 
+              height: '100px', 
+              borderRadius: '50%', 
+              marginBottom: '1.5rem',
+              border: '1px solid rgba(212, 175, 55, 0.3)',
+              boxShadow: '0 0 40px rgba(212, 175, 55, 0.15)',
+              objectFit: 'cover'
+            }} 
+          />
+          
+          <h1 style={{ 
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+            fontWeight: 400,
+            margin: '0 0 1rem 0',
+            color: '#d4af37',
+            letterSpacing: '3px',
+            textTransform: 'uppercase',
+            lineHeight: 1
+          }}>
+            Peron 1913
+          </h1>
+          
+          <p style={{
+            fontSize: '1.1rem',
+            color: '#a39c90',
+            fontWeight: 300,
+            lineHeight: 1.8,
+            margin: 0
+          }}>
+            Web sitemiz çok yakında yenilenmiş yüzüyle yayında olacak.<br/>
+            Ancak restoranımız tüm zarafetiyle misafirlerimizi ağırlamaya devam ediyor.
           </p>
         </div>
 
-        <div className="menu-grid">
-          {menuHighlights.map((item, index) => (
-            <article className="menu-card" key={item.title}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <Utensils size={24} />
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="experience-section">
-        <div className="experience-panel">
-          <Sparkles size={28} />
-          <h2>Özel geceler, davetler ve canlı müzik akışı için ayrı anlatım alanı.</h2>
-          <p>
-            Doğum günü, şirket yemeği, fasıl gecesi veya özel kutlama duyurularını bu
-            bölümde öne çıkarabilirsiniz.
-          </p>
-        </div>
-        <div className="experience-list">
-          <div>
-            <CalendarDays size={22} />
-            <span>Etkinlik takvimi</span>
-          </div>
-          <div>
-            <Wine size={22} />
-            <span>İçecek seçkisi</span>
-          </div>
-          <div>
-            <GlassWater size={22} />
-            <span>Kurumsal davetler</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="content-section" id="galeri">
-        <div className="section-heading">
-          <p className="section-kicker">Galeri</p>
-          <h2>Görseller geldiğinde şık bir portfolyo düzeni hazır.</h2>
-        </div>
-
-        <div className="gallery-grid">
-          {galleryItems.map((item) => (
-            <div className="gallery-tile" key={item}>
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="contact-section" id="iletisim">
-        <div>
-          <p className="section-kicker">İletişim</p>
-          <h2>Rezervasyon ve ulaşım bilgileri için kurumsal kapanış alanı.</h2>
-          <p>
-            Telefon, adres, harita, Instagram ve WhatsApp bağlantıları netleştiğinde bu
-            bölüm doğrudan canlı yayına uygun hale gelir.
-          </p>
-        </div>
-
-        <div className="contact-actions">
-          <a href="tel:+900000000000">
-            <Phone size={20} />
-            +90 000 000 00 00
+        {/* Right Side: Contact Info */}
+        <div style={{
+          flex: '1 1 350px',
+          maxWidth: '500px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          background: 'rgba(20, 18, 16, 0.65)',
+          backdropFilter: 'blur(12px)',
+          padding: '2.5rem',
+          border: '1px solid rgba(212, 175, 55, 0.15)',
+          borderRadius: '4px',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
+        }}>
+          <h2 style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: '1.6rem',
+            margin: '0 0 0.5rem 0',
+            color: '#fff',
+            borderBottom: '1px solid rgba(212, 175, 55, 0.2)',
+            paddingBottom: '0.8rem',
+            fontWeight: 400,
+            letterSpacing: '1px'
+          }}>İletişim & Rezervasyon</h2>
+          
+          <a href="tel:05344001201" style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#f2ece4', textDecoration: 'none' }}>
+            <Phone size={20} color="#d4af37" />
+            <span style={{ fontSize: '1.1rem', letterSpacing: '1px', fontWeight: 500 }}>0534 400 12 01</span>
           </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-            <Instagram size={20} />
-            Instagram
-          </a>
-          <a href="https://maps.google.com/" target="_blank" rel="noreferrer">
-            <MapPin size={20} />
-            Haritada Aç
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <MapPin size={24} color="#d4af37" style={{ flexShrink: 0 }} />
+            <span style={{ fontSize: '1rem', lineHeight: 1.5, color: '#a39c90' }}>
+              Koca Mustafapaşa, Akıncı Sk. No:5,<br/>34098 Fatih / İstanbul
+            </span>
+          </div>
+
+          <a href="https://www.instagram.com/peron.1913/" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#a39c90', textDecoration: 'none', transition: 'color 0.3s' }} onMouseOver={(e) => e.currentTarget.style.color = '#d4af37'} onMouseOut={(e) => e.currentTarget.style.color = '#a39c90'}>
+            <Instagram size={20} color="#d4af37" />
+            <span style={{ fontSize: '1rem', letterSpacing: '0.5px' }}>@peron.1913</span>
           </a>
         </div>
-      </section>
-
-      <footer className="site-footer">
-        <span>Peron 1913</span>
-        <span>Restoran & Meyhane</span>
-      </footer>
-    </main>
-  )
+        
+      </div>
+    </div>
+  );
 }
