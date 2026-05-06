@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const navItems = [
-  { label: 'Anasayfa', path: '#anasayfa' },
-  { label: 'Hakkımızda', path: '#hakkimizda' },
-  { label: 'Menü', path: '#menu' },
-  { label: 'Galeri', path: '#galeri' },
-  { label: 'İletişim', path: '#iletisim' },
+  { label: 'Anasayfa', path: '/#anasayfa' },
+  { label: 'Hakkımızda', path: '/#hakkimizda' },
+  { label: 'Menü', path: '/menu' },
+  { label: 'Galeri', path: '/#galeri' },
+  { label: 'İletişim', path: '/#iletisim' },
 ];
 
 export default function Footer() {
@@ -15,9 +16,9 @@ export default function Footer() {
         <img src="/peron-1913-logo.jpg" alt="Peron 1913" className="footer-logo" />
         <nav aria-label="Alt menü">
           {navItems.map((item) => (
-            <a href={item.path} key={item.path}>
+            <Link to={item.path} key={item.path}>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <a className="primary-button" href="tel:+905344001201">

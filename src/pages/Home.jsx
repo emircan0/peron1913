@@ -54,7 +54,7 @@ export default function Home() {
                 <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80" alt="Meyhane Sofrası" />
               </div>
               <div className="about-img-placeholder">
-                <img src="https://images.unsplash.com/photo-1550966841-396ad886756b?auto=format&fit=crop&w=600&q=80" alt="Mezeler" />
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Mezeler" />
               </div>
             </div>
             <div className="about-col">

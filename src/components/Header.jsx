@@ -3,28 +3,17 @@ import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
 
 const navItems = [
-  { label: 'Anasayfa', path: '/#anasayfa' },
-  { label: 'Hakkımızda', path: '/#hakkimizda' },
+  { label: 'Anasayfa', path: '/' },
+  { label: 'Hakkımızda', path: '/hakkimizda' },
   { label: 'Menü', path: '/menu' },
-  { label: 'Galeri', path: '/#galeri' },
-  { label: 'İletişim', path: '/#iletisim' },
+  { label: 'Galeri', path: '/galeri' },
+  { label: 'İletişim', path: '/iletisim' },
 ];
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
   const location = useLocation();
   const closeNav = () => setNavOpen(false);
-
-  const handleLinkClick = (path) => {
-    closeNav();
-    if (path.startsWith('/#') && location.pathname === '/') {
-      const id = path.split('#')[1];
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
 
   return (
     <>
@@ -39,7 +28,7 @@ export default function Header() {
       </div>
       <header className="site-header">
         <div className="header-container">
-          <Link to="/" className="brand" onClick={() => handleLinkClick('/#anasayfa')}>
+          <Link to="/" className="brand" onClick={closeNav}>
             <img src="/peron-1913-logo.jpg" alt="Peron 1913" />
             <div className="brand-text">
               <span className="brand-name">PERON 1913</span>
@@ -52,7 +41,7 @@ export default function Header() {
               <Link 
                 to={item.path} 
                 key={item.path} 
-                onClick={() => handleLinkClick(item.path)}
+                onClick={closeNav}
                 className={location.pathname === item.path ? 'active-link' : ''}
               >
                 {item.label}
@@ -67,6 +56,8 @@ export default function Header() {
             <button
               className="nav-toggle"
               type="button"
+              aria-label="Menüyü aç veya kapat"
+              aria-expanded={navOpen}
               onClick={() => setNavOpen(!navOpen)}
             >
               {navOpen ? <X size={24} /> : <Menu size={24} />}

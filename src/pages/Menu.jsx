@@ -27,7 +27,7 @@ export default function Menu() {
                 className="full-menu-img"
               />
               <div className="image-overlay">
-                <span>MENÜ GÖRSELİ BURAYA GELECEK</span>
+                <span>Peron 1913 Menü</span>
               </div>
             </div>
           </div>
