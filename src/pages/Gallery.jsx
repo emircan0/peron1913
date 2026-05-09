@@ -1,17 +1,7 @@
 import React from 'react';
+import { galleryImages, media } from '../media';
 
 export default function Gallery() {
-  const placeholders = [
-    "https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1470333732907-3f17ce602e4d?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80"
-  ];
-
   return (
     <main className="gallery-page">
       <section className="menu-header-section">
@@ -25,10 +15,16 @@ export default function Gallery() {
 
       <section className="gallery-section">
         <div className="gallery-container">
+          <div className="gallery-video-grid gallery-video-grid-single">
+            <div className="gallery-video-card">
+              <video src={media.venueVideo} poster={media.interior} controls muted playsInline preload="metadata" />
+            </div>
+          </div>
+
           <div className="gallery-row">
-            {placeholders.map((src, i) => (
-              <div key={i} className="gallery-img-placeholder">
-                <img src={src} alt={`Galeri ${i + 1}`} />
+            {galleryImages.map((item) => (
+              <div key={item.src} className="gallery-img-placeholder">
+                <img src={item.src} alt={item.alt} />
               </div>
             ))}
           </div>

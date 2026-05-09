@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Phone, MessageCircle, MapPin, Instagram } from 'lucide-react';
+import { galleryImages, instagramImages, media } from '../media';
 
 export default function Home() {
   const whatsappLink = "https://wa.me/905344001201";
@@ -10,10 +11,20 @@ export default function Home() {
     <main className="home-page">
       {/* 1. HERO SECTION */}
       <section className="hero" id="anasayfa">
-        <div className="hero-backdrop" />
+        <div className="hero-backdrop">
+          <video
+            className="hero-media"
+            src={media.venueVideo}
+            poster={media.interior}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        </div>
         <div className="hero-content fade-in">
           <p className="hero-eyebrow">İSTANBUL'UN KALBİNDE BİR NOSTALJİ</p>
-          <h1>Hoşgeldiniz</h1>
+          <h1>Hoş geldiniz</h1>
           <p className="hero-copy">
             Ailenizle birlikte keyifli vakit geçirmek ve unutulmaz bir yemek deneyimi yaşamak için Peron 1913'e bekliyoruz!
           </p>
@@ -51,15 +62,15 @@ export default function Home() {
           <div className="about-gallery">
             <div className="about-col">
               <div className="about-img-placeholder">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80" alt="Meyhane Sofrası" />
+                <img src={media.entrance} alt="Peron 1913 mekan girişi" />
               </div>
               <div className="about-img-placeholder">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Mezeler" />
+                <img src={media.mezzeDetail} alt="Peron 1913 meze sunumu" />
               </div>
             </div>
             <div className="about-col">
               <div className="about-img-placeholder tall">
-                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="Restoran Atmosferi" />
+                <img src={media.interior} alt="Peron 1913 iç mekan atmosferi" />
               </div>
             </div>
           </div>
@@ -68,7 +79,7 @@ export default function Home() {
 
       {/* 3. MENU SECTION */}
       <section className="menu-hero" id="menu">
-        <div className="menu-backdrop" />
+        <div className="menu-backdrop" style={{ '--menu-bg': `url(${media.socialDinner})` }} />
         <div className="menu-content">
           <h2>Peron 1913 Menü</h2>
           <div className="title-underline-center white-line"></div>
@@ -88,18 +99,11 @@ export default function Home() {
             <div className="title-underline-center"></div>
           </div>
           <div className="gallery-row">
-            <div className="gallery-img-placeholder">
-               <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=400&q=80" alt="Galeri 1" />
-            </div>
-            <div className="gallery-img-placeholder">
-               <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80" alt="Galeri 2" />
-            </div>
-            <div className="gallery-img-placeholder">
-               <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=400&q=80" alt="Galeri 3" />
-            </div>
-            <div className="gallery-img-placeholder">
-               <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="Galeri 4" />
-            </div>
+            {galleryImages.slice(1, 5).map((item) => (
+              <div className="gallery-img-placeholder" key={item.src}>
+                <img src={item.src} alt={item.alt} />
+              </div>
+            ))}
           </div>
           <div className="slider-dots">
             <span className="dot active"></span>
@@ -156,7 +160,7 @@ export default function Home() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.085353100234!2d28.92576137664684!3d40.99201947135246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab98418086057%3A0xc3b5e408d249d378!2sAk%C4%B1nc%C4%B1%20Sk.%20No%3A5%2C%20Cerrahpa%C5%9Fa%2C%2034098%20Fatih%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1714979123456!5m2!1str!2str" 
               width="100%" 
               height="100%" 
-              style={{ border: 0, minHeight: '400px', borderRadius: '12px' }} 
+              style={{ border: 0, minHeight: '400px', borderRadius: '8px' }} 
               allowFullScreen="" 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
@@ -169,18 +173,11 @@ export default function Home() {
       {/* 6. INSTAGRAM SECTION */}
       <section className="instagram-section">
         <div className="instagram-images">
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=400&q=80" alt="Instagram 1" />
-          </div>
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=400&q=80" alt="Instagram 2" />
-          </div>
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1470333732907-3f17ce602e4d?auto=format&fit=crop&w=400&q=80" alt="Instagram 3" />
-          </div>
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80" alt="Instagram 4" />
-          </div>
+          {instagramImages.map((item) => (
+            <div className="insta-img-placeholder" key={item.src}>
+              <img src={item.src} alt={item.alt} />
+            </div>
+          ))}
         </div>
         <div className="instagram-overlay-card">
           <div className="insta-icon-wrapper">

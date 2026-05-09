@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { media } from '../media';
 
 export default function About() {
   return (
@@ -43,15 +44,15 @@ export default function About() {
           <div className="about-gallery">
             <div className="about-col">
               <div className="about-img-placeholder">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80" alt="Meyhane Sofrası" />
+                <img src={media.entrance} alt="Peron 1913 dış mekan ve giriş" />
               </div>
               <div className="about-img-placeholder">
-                <img src="https://images.unsplash.com/photo-1550966841-396ad886756b?auto=format&fit=crop&w=600&q=80" alt="Mezeler" />
+                <img src={media.liverPlate} alt="Peron 1913 sıcak tabak sunumu" />
               </div>
             </div>
             <div className="about-col">
               <div className="about-img-placeholder tall">
-                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="Restoran Atmosferi" />
+                <img src={media.interior} alt="Peron 1913 iç mekan atmosferi" />
               </div>
             </div>
           </div>

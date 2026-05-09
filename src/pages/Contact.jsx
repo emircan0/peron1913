@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, MessageCircle, MapPin, Instagram } from 'lucide-react';
+import { instagramImages } from '../media';
 
 export default function Contact() {
   const whatsappLink = "https://wa.me/905344001201";
@@ -61,7 +62,7 @@ export default function Contact() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.085353100234!2d28.92576137664684!3d40.99201947135246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab98418086057%3A0xc3b5e408d249d378!2sAk%C4%B1nc%C4%B1%20Sk.%20No%3A5%2C%20Cerrahpa%C5%9Fa%2C%2034098%20Fatih%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1714979123456!5m2!1str!2str" 
               width="100%" 
               height="100%" 
-              style={{ border: 0, minHeight: '430px', borderRadius: '14px' }} 
+              style={{ border: 0, minHeight: '430px', borderRadius: '8px' }} 
               allowFullScreen="" 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
@@ -73,18 +74,11 @@ export default function Contact() {
 
       <section className="instagram-section">
         <div className="instagram-images">
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=400&q=80" alt="Instagram 1" />
-          </div>
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=400&q=80" alt="Instagram 2" />
-          </div>
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1470333732907-3f17ce602e4d?auto=format&fit=crop&w=400&q=80" alt="Instagram 3" />
-          </div>
-          <div className="insta-img-placeholder">
-            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80" alt="Instagram 4" />
-          </div>
+          {instagramImages.map((item) => (
+            <div className="insta-img-placeholder" key={item.src}>
+              <img src={item.src} alt={item.alt} />
+            </div>
+          ))}
         </div>
         <div className="instagram-overlay-card">
           <div className="insta-icon-wrapper">
