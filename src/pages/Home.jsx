@@ -1,11 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Phone, MessageCircle, MapPin, Instagram } from 'lucide-react';
-import { galleryImages, instagramImages, media } from '../media';
+import { instagramImages, media, venueGalleryImages } from '../media';
+import Lightbox from '../components/Lightbox';
 
 export default function Home() {
   const whatsappLink = "https://wa.me/905344001201";
   const mapsLink = "https://www.google.com/maps/dir/?api=1&destination=Peron+1913+Meyhanesi+Fatih+Istanbul";
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.75;
+    }
+  }, []);
+
+  const [lightboxIndex, setLightboxIndex] = React.useState(null);
+  const featuredGallery = venueGalleryImages.slice(0, 5);
+
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+  const nextLightbox = () => setLightboxIndex((prev) => (prev + 1) % featuredGallery.length);
+  const prevLightbox = () => setLightboxIndex((prev) => (prev - 1 + featuredGallery.length) % featuredGallery.length);
 
   return (
     <main className="home-page">
@@ -13,13 +29,16 @@ export default function Home() {
       <section className="hero" id="anasayfa">
         <div className="hero-backdrop">
           <video
+            ref={videoRef}
             className="hero-media"
-            src={media.venueVideo}
+            src={media.heroVideo}
             poster={media.interior}
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
+            aria-hidden="true"
           />
         </div>
         <div className="hero-content fade-in">
@@ -98,13 +117,26 @@ export default function Home() {
             <h2>Foto Galeri</h2>
             <div className="title-underline-center"></div>
           </div>
-          <div className="gallery-row">
-            {galleryImages.slice(1, 5).map((item) => (
-              <div className="gallery-img-placeholder" key={item.src}>
+          <div className="gallery-row gallery-vertical">
+            {featuredGallery.map((item, index) => (
+              <div
+                className="gallery-img-placeholder"
+                key={item.src}
+                onClick={() => openLightbox(index)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img src={item.src} alt={item.alt} />
               </div>
             ))}
           </div>
+
+          <Lightbox
+            images={featuredGallery}
+            currentIndex={lightboxIndex}
+            onClose={closeLightbox}
+            onNext={nextLightbox}
+            onPrev={prevLightbox}
+          />
           <div className="slider-dots">
             <span className="dot active"></span>
             <span className="dot"></span>

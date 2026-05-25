@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Consolidate all protocol and host variants onto the public canonical URL.
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^peron1913\.com$ [NC]
+  RewriteRule ^ https://peron1913.com%{REQUEST_URI} [R=301,L,NE]
+
+  # Serve route-specific HTML metadata without exposing .html URLs.
+  RewriteRule ^(hakkimizda|menu|galeri|iletisim)/?$ $1.html [L]
+
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>

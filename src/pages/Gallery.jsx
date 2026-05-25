@@ -1,7 +1,15 @@
 import React from 'react';
-import { galleryImages, media } from '../media';
+import { galleryImages, media, menuPosterImages, venueGalleryImages } from '../media';
+import Lightbox from '../components/Lightbox';
 
 export default function Gallery() {
+  const [lightboxIndex, setLightboxIndex] = React.useState(null);
+
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+  const nextLightbox = () => setLightboxIndex((prev) => (prev + 1) % galleryImages.length);
+  const prevLightbox = () => setLightboxIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+
   return (
     <main className="gallery-page">
       <section className="menu-header-section">
@@ -17,17 +25,53 @@ export default function Gallery() {
         <div className="gallery-container">
           <div className="gallery-video-grid gallery-video-grid-single">
             <div className="gallery-video-card">
-              <video src={media.venueVideo} poster={media.interior} controls muted playsInline preload="metadata" />
+              <video src={media.galleryVideo} poster={media.interior} controls muted playsInline preload="metadata" />
             </div>
           </div>
 
-          <div className="gallery-row">
-            {galleryImages.map((item) => (
-              <div key={item.src} className="gallery-img-placeholder">
+          <div className="gallery-row gallery-vertical">
+            {venueGalleryImages.map((item, index) => (
+              <div
+                key={item.src}
+                className="gallery-img-placeholder"
+                onClick={() => openLightbox(index)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img src={item.src} alt={item.alt} />
               </div>
             ))}
           </div>
+
+          <div className="gallery-poster-section">
+            <div className="text-center">
+              <span className="section-kicker">MENÜ SEÇENEKLERİ</span>
+              <h2>Öğle ve Seçkin Menüler</h2>
+              <div className="title-underline-center"></div>
+              <p className="gallery-poster-copy">
+                İçerik ve fiyatlar değişkenlik gösterebilir. Güncel bilgi için bizimle iletişime geçiniz.
+              </p>
+            </div>
+            <div className="gallery-poster-grid">
+              {menuPosterImages.map((item, index) => (
+                <figure
+                  className="gallery-poster-card"
+                  key={item.src}
+                  onClick={() => openLightbox(venueGalleryImages.length + index)}
+                >
+                  <img src={item.src} alt={item.alt} loading="lazy" />
+                  <figcaption>{item.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          <Lightbox
+            images={galleryImages}
+            currentIndex={lightboxIndex}
+            onClose={closeLightbox}
+            onNext={nextLightbox}
+            onPrev={prevLightbox}
+          />
           <div className="slider-dots">
             <span className="dot active"></span>
             <span className="dot"></span>
