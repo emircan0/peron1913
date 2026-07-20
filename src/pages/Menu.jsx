@@ -9,7 +9,7 @@ const menuCategories = [
     items: [
       { name: 'Kuzu Pirzola', price: '1.200 TL' },
       { name: 'Kuzu Şiş', price: '1.100 TL' },
-      { name: 'Dana Bonfile', price: '1.250 TL' },
+      { name: 'Dana Bonfile', price: '1.350 TL' },
       { name: 'Dana Antrikot', price: '1.100 TL' },
     ],
   },
