@@ -85,8 +85,8 @@ export default function Contact() {
              <Instagram size={40} color="#E4405F" />
           </div>
           <h3>Bizi Instagram'dan Takip Edin!</h3>
-          <a href="https://www.instagram.com/peron.1913/" target="_blank" rel="noreferrer">
-            @peron.1913
+          <a href="https://www.instagram.com/peron19.13?igsh=bTU2dzdmMmI3YTRq" target="_blank" rel="noreferrer">
+            @peron19.13
           </a>
         </div>
       </section>

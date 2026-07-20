@@ -227,7 +227,7 @@ export default function App() {
             <Phone size={20} />
             +90 000 000 00 00
           </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/peron19.13?igsh=bTU2dzdmMmI3YTRq" target="_blank" rel="noreferrer">
             <Instagram size={20} />
             Instagram
           </a>
